@@ -12,4 +12,4 @@ requires:
   IO::File: 0
 resources:
   repository: http://github.com/fayland/perl-sphinx-log-parser/tree
-version: 0.01
+version: 0.02

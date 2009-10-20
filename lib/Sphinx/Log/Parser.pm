@@ -1,5 +1,5 @@
 package Sphinx::Log::Parser;
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 use strict;
 use warnings;
@@ -119,7 +119,7 @@ Sphinx::Log::Parser - parse Sphinx searchd log
 
 =head1 VERSION
 
-version 0.01
+version 0.02
 
 =head1 SYNOPSIS
 
@@ -136,7 +136,7 @@ Sphinx::Log::Parser parse sphinx searchd query.log based on L<http://sphinxsearc
 
 =head2 Constructing a Parser
 
-B<new> requires as first argument a source from where to get the syslog lines. It can
+B<new> requires as first argument a source from where to get the searchd query log lines. It can
 be:
 
 =over 4

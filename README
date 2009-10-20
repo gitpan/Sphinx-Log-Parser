@@ -2,7 +2,7 @@ NAME
     Sphinx::Log::Parser - parse Sphinx searchd log
 
 VERSION
-    version 0.01
+    version 0.02
 
 SYNOPSIS
         use Sphinx::Log::Parser;
@@ -17,8 +17,8 @@ DESCRIPTION
     <http://sphinxsearch.com/docs/current.html#query-log-format>
 
   Constructing a Parser
-    new requires as first argument a source from where to get the syslog
-    lines. It can be:
+    new requires as first argument a source from where to get the searchd
+    query log lines. It can be:
 
     *   a filename for the searchd query log to be parsed. check query_log
         in conf file
