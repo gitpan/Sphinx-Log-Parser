@@ -1,0 +1,69 @@
+NAME
+    Sphinx::Log::Parser - parse Sphinx searchd log
+
+VERSION
+    version 0.01
+
+SYNOPSIS
+        use Sphinx::Log::Parser;
+
+        my $parser = Sphinx::Log::Parser->new( '/var/log/searchd/query.log' );
+        while (my $sl = $parser->next) {
+            print $sl->{total_matches}, $sl->{query_date}, "\n"; # more
+        }
+
+DESCRIPTION
+    Sphinx::Log::Parser parse sphinx searchd query.log based on
+    <http://sphinxsearch.com/docs/current.html#query-log-format>
+
+  Constructing a Parser
+    new requires as first argument a source from where to get the syslog
+    lines. It can be:
+
+    *   a filename for the searchd query log to be parsed. check query_log
+        in conf file
+
+    *   an IO::Handle object.
+
+    *   a File::Tail object as first argument, in which case the *read*
+        method will be called to get lines to process.
+
+    *   The log string, you need use IO::Scalar
+
+            use IO::Scalar;
+            my $logstr = '[Fri Jun 29 21:20:34 2007] 0.024 sec [all/0/rel 19886 (0,20) @channel_id] [lj] test';
+            my $io = new IO::Scalar \$logstr;
+            my $parser = Sphinx::Log::Parser->new( $io );
+
+  Parsing the file
+    The file is parse one line at a time by calling the next method, which
+    returns a hash-reference containing the following keys:
+
+        {
+          'total_matches' => '19886',
+          'match_mode' => 'all',
+          'query' => 'test',
+          'query_date' => 'Fri Jun 29 21:20:34 2007',
+          'filter_count' => '0',
+          'index_name' => 'lj',
+          'limit' => '20',
+          'query_time' => '0.024',
+          'sort_mode' => 'rel',
+          'groupby_attr' => 'channel_id',
+          'offset' => '0'
+        }
+
+    The log format is
+
+        [query-date] query-time [match-mode/filters-count/sort-mode
+            total-matches (offset,limit) @groupby-attr] [index-name] query
+
+AUTHOR
+      Fayland Lam <fayland@gmail.com>
+
+COPYRIGHT AND LICENSE
+    This software is copyright (c) 2009 by Fayland Lam.
+
+    This is free software; you can redistribute it and/or modify it under
+    the same terms as perl itself.
+

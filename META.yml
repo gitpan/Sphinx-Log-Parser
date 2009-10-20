@@ -1,0 +1,15 @@
+---
+abstract: 'parse Sphinx searchd log'
+author:
+  - 'Fayland Lam <fayland@gmail.com>'
+generated_by: 'Dist::Zilla version 1.092850'
+license: perl
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.4.html
+  version: 1.4
+name: Sphinx-Log-Parser
+requires:
+  IO::File: 0
+resources:
+  repository: http://github.com/fayland/perl-sphinx-log-parser/tree
+version: 0.01
