@@ -6,7 +6,7 @@ Makefile.PL
 README
 dist.ini
 lib/Sphinx/Log/Parser.pm
-t/0.9.8.log
+t/0.9.9.log
 t/00-load.t
 t/basic.t
 t/release-pod-coverage.t
